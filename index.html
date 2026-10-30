@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construindo uma Lista de Tarefas - Vue.js</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #101114;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        header {
+            padding: 50px 10%;
+            border-bottom: 3px solid #ff702e;
+            background-color: #191a1f;
+        }
+
+        header p {
+            color: #ff702e;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header span {
+            color: #ff702e;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 25px;
+        }
+
+        section {
+            background-color: #1b1c21;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ff702e;
+            border-radius: 6px;
+        }
+
+        h2 {
+            color: #ff702e;
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        p {
+            color: #dedede;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        code {
+            background-color: #292a30;
+            color: #ff995f;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .introducao {
+            border-left: 4px solid #ffffff;
+        }
+
+        .conclusao {
+            background-color: #242027;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #888;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 35px 7%;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            main {
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 22px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <p>PASSO A PASSO GUIADO · DAVI MOREIRA</p>
+        <h1>Construindo uma Lista de Tarefas com <span>Vue.js</span></h1>
+        <p>Desenvolvimento de uma aplicação interativa</p>
+    </header>
+
+    <main>
+
+        <section class="introducao">
+            <h2>Introdução</h2>
+
+            <p>
+                Agora vou apresentar a construção de uma lista de tarefas
+                utilizando o Vue.js.
+            </p>
+
+            <p>
+                O objetivo desse projeto é desenvolver uma aplicação simples
+                e interativa, na qual o usuário consiga organizar suas
+                atividades. Para isso, dividimos o funcionamento em quatro
+                etapas: adicionar uma tarefa, marcar como concluída,
+                remover uma tarefa e mostrar um contador de tarefas pendentes.
+            </p>
+        </section>
+
+        <section>
+            <h2>01. Adicionar uma tarefa</h2>
+
+            <p>
+                Primeiramente, temos a função de adicionar tarefas.
+            </p>
+
+            <p>
+                No código, utilizamos o <code>ref</code>, que é um recurso
+                do Vue.js responsável por armazenar informações reativas,
+                ou seja, informações que podem mudar durante a utilização
+                da aplicação.
+            </p>
+
+            <p>
+                Nesse caso, temos uma variável chamada
+                <code>novaTarefa</code>, que armazena o texto digitado
+                pelo usuário, e outra chamada <code>tarefas</code>,
+                que guarda todas as tarefas adicionadas.
+            </p>
+
+            <p>
+                Quando o usuário digita uma atividade no campo de texto
+                e clica no botão adicionar, a função
+                <code>adicionar()</code> é executada.
+            </p>
+
+            <p>
+                Essa função verifica primeiro se o campo não está vazio.
+                Se houver algum conteúdo, ela adiciona a nova tarefa
+                à lista e limpa o campo de texto para permitir que
+                o usuário digite outra atividade.
+            </p>
+        </section>
+
+        <section>
+            <h2>02. Marcar como concluída</h2>
+
+            <p>
+                A segunda funcionalidade é marcar uma tarefa como concluída.
+            </p>
+
+            <p>
+                Para isso, cada tarefa possui uma propriedade chamada
+                <code>feita</code>, que inicialmente recebe o valor
+                <code>false</code>, indicando que ainda não foi concluída.
+            </p>
+
+            <p>
+                Quando o usuário marca a caixa de seleção, esse valor
+                passa para <code>true</code>.
+            </p>
+
+            <p>
+                Isso acontece por meio do <code>v-model</code>,
+                que conecta o checkbox diretamente à informação
+                armazenada no Vue.js.
+            </p>
+
+            <p>
+                Dessa forma, conseguimos identificar quais atividades
+                já foram realizadas e quais ainda precisam ser feitas.
+            </p>
+        </section>
+
+        <section>
+            <h2>03. Remover uma tarefa</h2>
+
+            <p>
+                A terceira funcionalidade permite remover uma tarefa da lista.
+            </p>
+
+            <p>
+                Para isso, utilizamos o evento <code>@click</code>,
+                que executa uma ação quando o usuário clica em um botão.
+            </p>
+
+            <p>
+                Nesse caso, utilizamos o método <code>splice()</code>,
+                que remove um elemento da lista a partir de sua posição.
+            </p>
+
+            <p>
+                Assim, o usuário consegue excluir qualquer tarefa
+                que não queira mais manter na aplicação.
+            </p>
+        </section>
+
+        <section>
+            <h2>04. Mostrar o contador de pendentes</h2>
+
+            <p>
+                Por último, temos o contador de tarefas pendentes.
+            </p>
+
+            <p>
+                Para desenvolver essa funcionalidade, utilizamos
+                o <code>computed</code>, que permite calcular
+                automaticamente um valor com base em outras informações.
+            </p>
+
+            <p>
+                No nosso código, ele verifica a lista de tarefas,
+                identifica quais ainda não foram concluídas e conta
+                quantas estão pendentes.
+            </p>
+
+            <p>
+                Sempre que uma tarefa é adicionada, concluída ou removida,
+                esse número é atualizado automaticamente.
+            </p>
+        </section>
+
+        <section class="conclusao">
+            <h2>Conclusão</h2>
+
+            <p>
+                Com isso, conseguimos construir uma lista de tarefas
+                com quatro funcionalidades principais, utilizando
+                recursos importantes do Vue.js, como
+                <code>ref</code>, <code>computed</code>,
+                <code>v-model</code>, <code>v-for</code> e eventos de clique.
+            </p>
+
+            <p>
+                Esse exemplo demonstra como o Vue.js facilita a criação
+                de aplicações dinâmicas, organizadas e interativas,
+                sem precisar atualizar manualmente cada informação na tela.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        Desenvolvimento de Sistemas · Vue.js · Davi Moreira
+    </footer>
+
+</body>
+</html>
